@@ -1,0 +1,29 @@
+
+# Git metadata
+.git
+.gitignore
+
+# Maven build output
+target/
+**/target/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.iml
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+**/secrets/
+
+# Logs and operating-system files
+*.log
+.DS_Store
+
+# Local Docker overrides
+docker-compose.override.yml
