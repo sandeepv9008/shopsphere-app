@@ -85,6 +85,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+	    <plugin>
+            	<groupId>org.owasp</groupId>
+            	<artifactId>dependency-check-maven</artifactId>
+            	<version>12.1.0</version>
+            	<configuration>
+                	<failBuildOnCVSS>11</failBuildOnCVSS>
+                	<format>HTML</format>
+            	</configuration>
+        	</plugin>
         </plugins>
     </build>
 
