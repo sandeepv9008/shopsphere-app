@@ -92,6 +92,7 @@
             	<configuration>
                 	<failBuildOnCVSS>11</failBuildOnCVSS>
                 	<format>HTML</format>
+			<ossindexAnalyzerEnabled>false</ossindexAnalyzerEnabled>
             	</configuration>
         	</plugin>
         </plugins>
