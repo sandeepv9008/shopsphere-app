@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.14</version>
+        <version>4.1.2</version>
         <relativePath/>
     </parent>
 
@@ -21,6 +21,7 @@
 
     <properties>
         <java.version>21</java.version>
+	<tomcat.version>10.1.59</tomcat.version>
     </properties>
 
     <dependencies>
@@ -37,12 +38,12 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- PostgreSQL -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
+	<dependency>
+    		<groupId>at.yawk.lz4</groupId>
+    		<artifactId>lz4-java</artifactId>
+    		<version>1.11.4</version>
+	</dependency>
 
         <!-- Validation -->
         <dependency>
@@ -80,8 +81,33 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+	<dependency>
+    		<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>42.7.12</version>
+    		<scope>runtime</scope>
+	</dependency>
     </dependencies>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-bom</artifactId>
+            <version>4.1.137.Final</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+   <dependency>
+    <groupId>com.fasterxml.jackson</groupId>
+    <artifactId>jackson-bom</artifactId>
+    <version>2.21.7</version>
+    <type>pom</type>
+    <scope>import</scope>
+   </dependency>
+ </dependencies>
+</dependencyManagement>
 
     <build>
         <finalName>shopsphere</finalName>

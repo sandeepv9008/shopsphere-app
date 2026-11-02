@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy dependency metadata first to improve Docker layer caching.
 COPY pom.xml .
-RUN mvn -B dependency:go-offline
+RUN mvn -B -Dhttps.protocols=TLSv1.2 -Dhttp.keepAlive=false dependency:go-offline
 
 # Copy application source and package with tests enabled.
 COPY src ./src
