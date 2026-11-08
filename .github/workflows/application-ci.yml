@@ -116,8 +116,12 @@ jobs:
             dependency-check-${{ runner.os }}-
 
       - name: Run OWASP Dependency-Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
-          mvn -B org.owasp:dependency-check-maven:12.1.0:check
+          mvn -B org.owasp:dependency-check-maven:12.1.0:check \
+            -DnvdApiKeyEnvironmentVariable=NVD_API_KEY \
+            -DnvdMaxRetryCount=20
 
       - name: Upload Dependency-Check report
         if: always()
