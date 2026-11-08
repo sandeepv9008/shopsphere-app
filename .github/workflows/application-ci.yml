@@ -72,6 +72,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Clear SonarScanner cache
+        run: rm -rf ~/.sonar/cache ~/.sonar/_tmp
+
       - name: Set up Java 21
         uses: actions/setup-java@v4
         with:
@@ -111,15 +114,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository/org/owasp/dependency-check-data
-          key: dependency-check-${{ runner.os }}-${{ hashFiles('pom.xml') }}
+          key: dependency-check-v12.2.2-${{ runner.os }}-${{ hashFiles('pom.xml') }}
           restore-keys: |
-            dependency-check-${{ runner.os }}-
+            dependency-check-v12.2.2-${{ runner.os }}-
 
       - name: Run OWASP Dependency-Check
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
-          mvn -B org.owasp:dependency-check-maven:12.1.0:check \
+          mvn -B org.owasp:dependency-check-maven:12.2.2:check \
             -DnvdApiKeyEnvironmentVariable=NVD_API_KEY \
             -DnvdMaxRetryCount=20
 
