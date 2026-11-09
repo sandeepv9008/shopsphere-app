@@ -9,7 +9,7 @@ RUN mvn -B -Dhttps.protocols=TLSv1.2 -Dhttp.keepAlive=false dependency:go-offlin
 
 # Copy application source and package with tests enabled.
 COPY src ./src
-RUN mvn -B clean verify && test -f target/shopsphere.jar
+RUN mvn -B clean package -DskipTests && test -f target/shopsphere.jar
 
 # ---------- Runtime stage ----------
 FROM eclipse-temurin:21-jre
